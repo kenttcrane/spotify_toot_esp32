@@ -1,0 +1,13 @@
+wifi_ssid,SSID
+wifi_password,PASSWORD
+ddns_domain,DDNS_NOW_DOMAIN
+ddns_password,DDNS_NOW_PASSWORD_OR_TOKEN
+server_auth_user_name,DIGEST_AUTH_USER_NAME
+server_auth_password,DIGEST_AUTH_PASSWORD
+spotify_client_id,SPOTIFY_API_CLIENT_ID
+spotify_client_secret,SPOTFY_API_CLIENT_SECRET
+mastodon_access_token,MASODON_ACCESS_TOKEN
+firebase_api_key,FIREBASE_WEB_API_KEY
+firebase_email,FREEBASE_AUTH_EMAIL
+firebase_password,FIREBASE_AUTH_PASSWORD
+firebase_project_id,FIREbASE_PROJECT_ID
