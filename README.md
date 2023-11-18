@@ -7,7 +7,6 @@ ESP32-DevKitC-32E（[こちら](https://akizukidenshi.com/catalog/g/gM-15673/)�
 ### 各種アカウント、APIの登録
 * Spotify APIの登録
 * Mastodonのアカウント作成、Mastodon APIの登録
-* Mastodonの自分のアカウントだけを追加したリストの作成、リストIDのメモ
 * Firestoreのアカウント登録
 * DDNS Nowでのドメイン取得
   * ローカルでのみ動かす場合は必要ありません。スケッチのDDNS Updateの部分をコメントアウトしてください。
@@ -29,7 +28,7 @@ ESP32-DevKitC-32E（[こちら](https://akizukidenshi.com/catalog/g/gM-15673/)�
 #### FirebaseのAuthorizationの設定
 本プログラムでは、Firebaseのメール認証を必要としています。[Firebase](https://console.firebase.google.com/)でプロジェクトを選び、"Authentication"→"Sign-in method"を選び、ログインプロバイダに「メール/パスワード」を追加、"Authentication"→"Users"よりメールアドレスおよびパスワードを登録してください。
 ### APIキーなどのconfig.csvへの登録
-connfig.csvからapiキーなどの情報を取得しています。config_sample.csvを参考に、以下の変数を含んだconfig.csvを作成してください。
+config.csvからapiキーなどの情報を取得しています。config_sample.csvを参考に、以下の変数を含んだconfig.csvを作成してください。
 ※カンマの前後などにスペースを使用しないでください。
 * WiFiのSSIDとパスワード
   * wifi_ssid

@@ -276,14 +276,32 @@ String getTootText(MusicInfo *music) {
 }
 
 String lastTootOf(String &accessToken, String &playlistUrl) {
-  String myListId = "14413";
   String maxId = "9999999999999999999";
   int limit = 4;
   HTTPClient http;
+  DynamicJsonDocument doc(16392);
+  DeserializationError error;
+
+  // Get user id
+  http.begin("https://mstdn.jp/api/v1/accounts/verify_credentials");
+  http.addHeader("Authorization", "Bearer " + accessToken);
+  int httpcode = http.GET();
+  String payload = http.getString();
+
+  // Serial.println(payload);
+  // Serial.println(payload.length());
+
+  error = deserializeJson(doc, payload);
+  if (error) {
+    Serial.print("lastTootOf: JsonDocument: ");
+    Serial.println(error.c_str());
+  }
+  JsonObject obj = doc.as<JsonObject>();
+  String mastodonUserId = obj["id"];
 
   // Search parent toot
   while (1) {
-    http.begin("https://mstdn.jp/api/v1/timelines/list/" + myListId + "?max_id=" + maxId + "&limit=" + String(limit));
+    http.begin("https://mstdn.jp/api/v1/accounts/" + mastodonUserId + "/statuses?max_id=" + maxId + "&limit=" + String(limit));
     http.addHeader("Authorization", "Bearer " + accessToken);
     int httpCode = http.GET();
     String payload = http.getString();
@@ -291,8 +309,7 @@ String lastTootOf(String &accessToken, String &playlistUrl) {
     // Serial.println(payload);
     // Serial.println(payload.length());
 
-    DynamicJsonDocument doc(16392);
-    DeserializationError error = deserializeJson(doc, payload);
+    error = deserializeJson(doc, payload);
     if (error) {
       Serial.print("lastTootOf: JsonDocument: ");
       Serial.println(error.c_str());
